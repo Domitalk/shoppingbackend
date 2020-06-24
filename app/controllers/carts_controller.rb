@@ -18,9 +18,10 @@ class CartsController < ApplicationController
         render json: @carts.to_json
     end 
 
+    # route checked with postman
     def new
         @cart = Cart.create(
-            user_id: cart_params.user_id, 
+            user_id: cart_params[:user_id], 
             current_cart: true
         )
 

@@ -1,9 +1,11 @@
 class UsersController < ApplicationController 
 
-    # def index
-    #     @users = User.all
-    #     render json: @users.to_json
-    # end
+    def index
+        @users = User.all
+        render json: @users.to_json
+    end
+    
+    #route checked with postman
     def new
         @user = User.create(user_params)
         render json: @user.to_json
