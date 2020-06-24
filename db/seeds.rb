@@ -7,8 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 require 'faker'
+
 User.destroy_all
 Item.destroy_all
+Cart.destroy_all 
+CartItem.destroy_all
 
 10.times do 
     User.create(
@@ -27,6 +30,18 @@ end
     )
 end 
 
+Cart.create({
+    user_id: User.first.id,
+    current_cart: true
+})
+
+4.times do 
+    CartItem.create(
+        cart_id: Cart.first.id, 
+        item_id: Item.all.sample.id,
+        quantity: 1
+    )
+end 
 
 
 # User.create({
@@ -34,19 +49,23 @@ end
 #     profile_image: ""
 # })
 
-Cart.create({
-    user_id: User.first,
-    current_cart: true
-})
+# Cart.create({
+#     user_id: User.first,
+#     current_cart: true
+# })
 
 # Item.create({
 #     name: "Rice",
 #     price: 10.00
 # })
 
-CartItem.create({
-    cart_id: Cart.first, 
-    item_id: Item.first,
-    quantity: 1
-})
-
+# CartItem.create({
+#     cart_id: Cart.first, 
+#     item_id: Item.all.sample,
+#     quantity: 1
+# })
+# CartItem.create({
+#     cart_id: Cart.first, 
+#     item_id: Item.all.sample,
+#     quantity: 1
+# })

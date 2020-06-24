@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     #     @users = User.all
     #     render json: @users.to_json
     # end
-    def create
+    def new
         @user = User.create(user_params)
         render json: @user.to_json
     end
